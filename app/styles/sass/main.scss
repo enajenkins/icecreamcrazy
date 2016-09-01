@@ -1,0 +1,10 @@
+body {
+  background-color: #000000;
+  color: #666666;
+
+  p {
+    transform: rotate(45deg);
+    display: flex;
+    border-radius: 10px;
+  }
+}
