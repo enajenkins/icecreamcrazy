@@ -11,7 +11,7 @@
   var uglify = require('gulp-uglify');
   //var browserify = require('gulp-browserify');
   var browserSync = require('browser-sync');
-  var notify = require('gulp-notify'),
+  var notify = require('gulp-notify');
   var server = require('gulp-server-livereload');
   //var del = require('gulp-del');
   var watch = require('gulp-watch');
@@ -104,6 +104,7 @@
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
       });
 
+      // add watch script for images here
   });
 
   // set up the watch tasks... pass in the path to the files, then an array fot hte tasks we want to run
