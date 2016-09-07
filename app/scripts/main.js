@@ -11,53 +11,53 @@
 
 
 
-//   //define the view that will render the rectangle
-//   var RectangleView = Backbone.View.extend({
-//     //this view is responsible for creating a visual representaion of the rectangle model
-//     //define properties for view
-//     tagName: 'div',
-//     className: 'rectangle',
+  //define the view that will render the rectangle
+  var RectangleView = Backbone.View.extend({
+    //this view is responsible for creating a visual representaion of the rectangle model
+    //define properties for view
+    tagName: 'div',
+    className: 'rectangle',
 
-//     //set up declarative bindings to event functions
-//     events: {
-//       'click': 'move' //declare an event that calls a function whenever fired
-//     },
+    //set up declarative bindings to event functions
+    events: {
+      'click': 'move' //declare an event that calls a function whenever fired
+    },
 
-//     render: function(){
-//       //call functions needed to render the rectangle into the document
-//       this.setDimensions();
-//       this.setPosition();
-//       this.setColor();
-//       return this;//backbone.js convention. will return undefined if this is omitted. 
-//     },
+    render: function(){
+      //call functions needed to render the rectangle into the document
+      this.setDimensions();
+      this.setPosition();
+      this.setColor();
+      return this;//backbone.js convention. will return undefined if this is omitted. 
+    },
 
-//     setDimensions: function(){
-//       //define the functions needed to render the rectangle
-//       //access the dom element that is bound to this view and set it's width and height
-//       this.$el.css({ //can use jquery css method since we are using jq selector
-//         width: this.model.get('width') + 'px',
-//         height: this.model.get('height') + 'px'
-//       });
-//     },//when this is called, it will apply the model's dimensions to the dom element 
+    setDimensions: function(){
+      //define the functions needed to render the rectangle
+      //access the dom element that is bound to this view and set it's width and height
+      this.$el.css({ //can use jquery css method since we are using jq selector
+        width: this.model.get('width') + 'px',
+        height: this.model.get('height') + 'px'
+      });
+    },//when this is called, it will apply the model's dimensions to the dom element 
 
-//     setPosition: function(){
-//       var position = this.model.get('position');
-//       this.$el.css({
-//         left: position.x,
-//         top: position.y
-//       });
+    setPosition: function(){
+      var position = this.model.get('position');
+      this.$el.css({
+        left: position.x,
+        top: position.y
+      });
 
-//     },
+    },
 
-//     setColor: function(){
-//       this.$el.css( 'background-color', this.model.get('color'));
-//     },
-//     // define the function that will run whenever the click event (or whatever event it's bound to) is fired
-//     move: function(){
-//       this.$el.css('left', this.$el.position().left + 10); //read the current value of the property, then add 10 and apply that
-//     }
+    setColor: function(){
+      this.$el.css( 'background-color', this.model.get('color'));
+    },
+    // define the function that will run whenever the click event (or whatever event it's bound to) is fired
+    move: function(){
+      this.$el.css('left', this.$el.position().left + 10); //read the current value of the property, then add 10 and apply that
+    }
 
-//   });
+  });
 
 
 
@@ -572,7 +572,7 @@ var SomeOtherView = new Backbone.View.extend({
 //bind the view's render method
 //listen for changes on the model
 myNewModel.on('change', function(){
-  $("body").append(someView.render().el);
+  $('body').append(someView.render().el);
 });
 
 

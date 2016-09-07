@@ -9,10 +9,10 @@
   var eslint       = require('gulp-eslint');
   var concat       = require('gulp-concat');
   var uglify       = require('gulp-uglify');
-  var browserify   = require('gulp-browserify');
+  //var browserify   = require('gulp-browserify');
   //var browserSync = require('browser-sync');
   var notify       = require('gulp-notify');
-  //var server = require('gulp-server-livereload');
+  var server = require('gulp-server-livereload');
   //var del = require('gulp-del');
   var watch        = require('gulp-watch');
 
@@ -80,7 +80,6 @@
     .pipe(eslint.failOnError());
   });
 
-
   // combine vendor js files into one file and minify
   gulp.task('vendor', function() {  
     gulp.src(vendorInput)
@@ -96,15 +95,15 @@
   // });
 
   // start server
-  // gulp.task('runserver', function() {
-  //   gulp.src('app')
-  //     .pipe(server({
-  //       livereload: true,
-  //       directoryListing: true,
-  //       open: true,
-  //       defaultFile: '/app/index.html'
-  //     }));
-  // });
+  gulp.task('runserver', function() {
+    gulp.src('app')
+      .pipe(server({
+        livereload: true,
+        directoryListing: true,
+        open: true,
+        defaultFile: '/app/index.html'
+      }));
+  });
 
 // watch the sass files and run the styles task when something changes and log a message in the console
   gulp.task('watch', function() {
