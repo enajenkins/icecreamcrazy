@@ -572,7 +572,7 @@ var SomeOtherView = new Backbone.View.extend({
 //bind the view's render method
 //listen for changes on the model
 myNewModel.on('change', function(){
-  $('body').append(someView.render().el);
+  $("body").append(someView.render().el);
 });
 
 

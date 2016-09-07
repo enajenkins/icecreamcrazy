@@ -1,20 +1,20 @@
 'use strict';
 
 // use the require() function to get access to our modules
-  var gulp = require('gulp');
-  var gulputil = require('gulp-util');
-  var sass = require('gulp-sass');
-  var sourcemaps = require('gulp-sourcemaps');
+  var gulp         = require('gulp');
+  var gulputil     = require('gulp-util');
+  var sass         = require('gulp-sass');
+  var sourcemaps   = require('gulp-sourcemaps');
   var autoprefixer = require('gulp-autoprefixer');
-  var eslint = require('gulp-eslint');
-  var concat = require('gulp-concat');
-  var uglify = require('gulp-uglify');
-  var browserify = require('gulp-browserify');
+  var eslint       = require('gulp-eslint');
+  var concat       = require('gulp-concat');
+  var uglify       = require('gulp-uglify');
+  var browserify   = require('gulp-browserify');
   //var browserSync = require('browser-sync');
-  var notify = require('gulp-notify');
+  var notify       = require('gulp-notify');
   //var server = require('gulp-server-livereload');
   //var del = require('gulp-del');
-  var watch = require('gulp-watch');
+  var watch        = require('gulp-watch');
 
 // set up plugin options
   var sassOptions = {
@@ -34,12 +34,12 @@
       };
 
 // define file paths
-  var cssInput = 'app/styles/sass/**/*.scss',
-      cssOutput = 'public/css/',
-      jsInput = 'app/scripts/*.js',
-      jsOutput = 'public/js/main.js',
-      vendorInput = 'app/scripts/vendor/**/*.js',
-      vendorOutput = 'public/js/';
+  var cssInput      = 'app/styles/sass/**/*.scss',
+      cssOutput     = 'public/css/',
+      jsInput       = 'app/scripts/*.js',
+      jsOutput      = 'public/js/main.js',
+      vendorInput   = 'app/scripts/vendor/**/*.js',
+      vendorOutput  = 'public/js/';
 
 // build the tasks... gulp.task(nameOfTask, function(){callBackFunction})
 
@@ -56,15 +56,30 @@
   });
 
   // validate your js
-  gulp.task('js', function() {
-    gulp.src(jsInput)
-      .pipe(eslint({
-        'rules':{
+  // gulp.task('js', function() {
+  //   gulp.src(jsInput)
+  //     .pipe(eslint({
+  //       'rules':{
+  //         'quotes': [1, 'single'],
+  //         'semi': [1, 'always']
+  //       }
+  //     }))
+  // });
+
+
+
+  gulp.task('lint', function() {
+    return gulp.src(jsInput).pipe(eslint({
+      'rules':{
           'quotes': [1, 'single'],
           'semi': [1, 'always']
-        }
-      }))
+      }
+    }))
+    .pipe(eslint.format())
+    // Brick on failure to be super strict
+    .pipe(eslint.failOnError());
   });
+
 
   // combine vendor js files into one file and minify
   gulp.task('vendor', function() {  
@@ -99,7 +114,7 @@
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
       });
 
-    gulp.watch(jsInput, ['js'])
+    gulp.watch(jsInput, ['lint'])
       .on('change', function(event) {
         console.log('File ' + event.path + ' was ' + event.type + ', running tasks...');
       });
@@ -112,7 +127,7 @@
     //   gulp.watch('app/styles/sass/**/*.scss',['styles']);
     // });  
 
-  gulp.task('default',['css', 'js', 'vendor', 'watch']);  
+  gulp.task('default',['css', 'lint', 'vendor', 'watch']);  
   gulp.task('test', ['runserver']);
 
 
