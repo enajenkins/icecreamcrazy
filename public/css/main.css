@@ -1,10 +1,13 @@
 body {
   background-color: #000000;
-  color: #666666; }
-  body p {
-    -webkit-transform: rotate(45deg);
-            transform: rotate(45deg);
-    display: -webkit-box;
-    display: -ms-flexbox;
-    display: flex;
-    border-radius: 10px; }
+  color: #333; }
+
+body p {
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 10px; }
+
+/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIm1haW4uc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxJQUFJLENBQUE7RUFDRixnQkFBZ0IsRUFBRSxPQUNsQjtFQUFBLEtBQU8sRUFBQSxJQUZULEdBQUE7O0FBQUEsQUFLSSxJQURELENBQ0MsQ0FBQSxDQUFBO0VBQUEsU0FBVyxFQUFBLGFBQUE7RUFDWCxPQUFTLEVBQUEsSUFDVDtFQUFBLGFBQWUsRUFBQSxJQUNoQixHQUFBIiwiZmlsZSI6Im1haW4uY3NzIiwic291cmNlc0NvbnRlbnQiOlsiYm9keSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDAwMDA7XG4gIGNvbG9yOiAjMzMzO1xuXG4gIHAge1xuICAgIHRyYW5zZm9ybTogcm90YXRlKDQ1ZGVnKTtcbiAgICBkaXNwbGF5OiBmbGV4O1xuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XG4gIH1cbn1cbiJdLCJzb3VyY2VSb290IjoiL3NvdXJjZS8ifQ== */
