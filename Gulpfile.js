@@ -12,7 +12,7 @@
   var browserify   = require('gulp-browserify');
   //var browserSync = require('browser-sync');
   var notify       = require('gulp-notify');
-  //var server = require('gulp-server-livereload');
+  var server       = require('gulp-server-livereload');
   //var del = require('gulp-del');
   var watch        = require('gulp-watch');
 
@@ -82,7 +82,7 @@
 
 
   // combine vendor js files into one file and minify
-  gulp.task('vendor', function() {  
+  gulp.task('vendor', function() {
     gulp.src(vendorInput)
       .pipe(concat('vendor.js'))
       .pipe(uglify())
@@ -90,21 +90,21 @@
   });
 
   // // del unused files
-  // gulp.task('del', function () {  
+  // gulp.task('del', function () {
   //   gulp.src('build', {read: false})
   //     .pipe(del());
   // });
 
   // start server
-  // gulp.task('runserver', function() {
-  //   gulp.src('app')
-  //     .pipe(server({
-  //       livereload: true,
-  //       directoryListing: true,
-  //       open: true,
-  //       defaultFile: '/app/index.html'
-  //     }));
-  // });
+  gulp.task('runserver', function() {
+    gulp.src('app')
+      .pipe(server({
+        livereload: true,
+        directoryListing: false,
+        open: true,
+        defaultFile: 'index.html'
+      }));
+  });
 
 // watch the sass files and run the styles task when something changes and log a message in the console
   gulp.task('watch', function() {
@@ -125,12 +125,7 @@
   // set up the watch tasks... pass in the path to the files, then an array fot hte tasks we want to run
     // gulp.task('default',function() {
     //   gulp.watch('app/styles/sass/**/*.scss',['styles']);
-    // });  
+    // });
 
-  gulp.task('default',['css', 'lint', 'vendor', 'watch']);  
+  gulp.task('default',['css', 'lint', 'vendor', 'watch', 'runserver']);
   gulp.task('test', ['runserver']);
-
-
-
-
-
