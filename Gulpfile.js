@@ -9,10 +9,10 @@
   var eslint       = require('gulp-eslint');
   var concat       = require('gulp-concat');
   var uglify       = require('gulp-uglify');
-  //var browserify   = require('gulp-browserify');
+  var browserify   = require('gulp-browserify');
   //var browserSync = require('browser-sync');
   var notify       = require('gulp-notify');
-  var server = require('gulp-server-livereload');
+  var server       = require('gulp-server-livereload');
   //var del = require('gulp-del');
   var watch        = require('gulp-watch');
 
@@ -80,8 +80,9 @@
     .pipe(eslint.failOnError());
   });
 
+
   // combine vendor js files into one file and minify
-  gulp.task('vendor', function() {  
+  gulp.task('vendor', function() {
     gulp.src(vendorInput)
       .pipe(concat('vendor.js'))
       .pipe(uglify())
@@ -89,7 +90,7 @@
   });
 
   // // del unused files
-  // gulp.task('del', function () {  
+  // gulp.task('del', function () {
   //   gulp.src('build', {read: false})
   //     .pipe(del());
   // });
@@ -99,9 +100,9 @@
     gulp.src('app')
       .pipe(server({
         livereload: true,
-        directoryListing: true,
+        directoryListing: false,
         open: true,
-        defaultFile: '/app/index.html'
+        defaultFile: 'index.html'
       }));
   });
 
@@ -124,12 +125,7 @@
   // set up the watch tasks... pass in the path to the files, then an array fot hte tasks we want to run
     // gulp.task('default',function() {
     //   gulp.watch('app/styles/sass/**/*.scss',['styles']);
-    // });  
+    // });
 
-  gulp.task('default',['css', 'lint', 'vendor', 'watch']);  
+  gulp.task('default',['css', 'lint', 'vendor', 'watch', 'runserver']);
   gulp.task('test', ['runserver']);
-
-
-
-
-
