@@ -10,10 +10,8 @@
   var concat       = require('gulp-concat');
   var uglify       = require('gulp-uglify');
   var browserify   = require('gulp-browserify');
-  //var browserSync = require('browser-sync');
   var notify       = require('gulp-notify');
   var server       = require('gulp-server-livereload');
-  //var del = require('gulp-del');
   var watch        = require('gulp-watch');
 
 // set up plugin options
@@ -34,14 +32,22 @@
       };
 
 // define file paths
-  var cssInput      = 'app/styles/sass/**/*.scss',
+  var htmlInput     = 'app/index.html',
+      htmlOutput    = 'public/',
+      cssInput      = 'app/styles/sass/**/*.scss',
       cssOutput     = 'public/css/',
       jsInput       = 'app/scripts/*.js',
-      jsOutput      = 'public/js/main.js',
+      jsOutput      = 'public/js/',
       vendorInput   = 'app/scripts/vendor/**/*.js',
       vendorOutput  = 'public/js/';
 
 // build the tasks... gulp.task(nameOfTask, function(){callBackFunction})
+
+
+  gulp.task('html-copy', function() {
+    return gulp.src(htmlInput)
+      .pipe(gulp.dest(htmlOutput));
+  });
 
 
   // compile the css from sass and create sourcemaps
@@ -56,18 +62,6 @@
   });
 
   // validate your js
-  // gulp.task('js', function() {
-  //   gulp.src(jsInput)
-  //     .pipe(eslint({
-  //       'rules':{
-  //         'quotes': [1, 'single'],
-  //         'semi': [1, 'always']
-  //       }
-  //     }))
-  // });
-
-
-
   gulp.task('lint', function() {
     return gulp.src(jsInput).pipe(eslint({
       'rules':{
@@ -77,7 +71,8 @@
     }))
     .pipe(eslint.format())
     // Brick on failure to be super strict
-    .pipe(eslint.failOnError());
+    .pipe(eslint.failOnError())
+    .pipe(gulp.dest(jsOutput));
   });
 
 
@@ -97,7 +92,7 @@
 
   // start server
   gulp.task('runserver', function() {
-    gulp.src('app')
+    gulp.src('public')
       .pipe(server({
         livereload: true,
         directoryListing: false,
@@ -127,5 +122,4 @@
     //   gulp.watch('app/styles/sass/**/*.scss',['styles']);
     // });
 
-  gulp.task('default',['css', 'lint', 'vendor', 'watch', 'runserver']);
-  gulp.task('test', ['runserver']);
+  gulp.task('default',['html-copy','css', 'lint', 'vendor', 'watch', 'runserver']);
