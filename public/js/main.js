@@ -29,7 +29,7 @@
     //     this.setDimensions();
     //     this.setPosition();
     //     this.setColor();
-    //     return this;//backbone.js convention. will return undefined if this is omitted. 
+    //     return this;//backbone.js convention. will return undefined if this is omitted.
     //   },
 
     //   setDimensions: function(){
@@ -39,7 +39,7 @@
     //       width: this.model.get('width') + 'px',
     //       height: this.model.get('height') + 'px'
     //     });
-    //   },//when this is called, it will apply the model's dimensions to the dom element 
+    //   },//when this is called, it will apply the model's dimensions to the dom element
 
     //   setPosition: function(){
     //     var position = this.model.get('position');
@@ -163,9 +163,9 @@
 
 
 
-  // //models form the core of your application. they contain the app's state, logic, and behavior 
+  // //models form the core of your application. they contain the app's state, logic, and behavior
 
-  // //create new model 'types' by extending Backbone.Model. 
+  // //create new model 'types' by extending Backbone.Model.
   // //the arguments in the extend method contains the configuration for your new model type
   // //passing an empty object will result in a new model type identical to backbone.model
   // //uppercasing is the naming convention for constructor functions in JS
@@ -222,7 +222,7 @@
   //   var ford = new Vehicle();
   // */
 
-  // /* 
+  // /*
   //   it's common to provide a model's data as an argument to the constructor
   //   var model = new Backbone.Model ({
   //     name: 'John',
@@ -230,7 +230,7 @@
   //   });
   // */
 
-  // //'initialize', when defined is a function that will be called when the model is instantiated. 
+  // //'initialize', when defined is a function that will be called when the model is instantiated.
   // /*
   // This will output the console log
 
@@ -255,7 +255,7 @@
   //     console.log('initialize A');
   //   },
   //   asString: function(){ //like a toString function it will provide a string representation of the state of the object
-  //     return JSON.stringify(this.toJSON()); //JSON.stringify is available in all modern browsers. Converts a JavaScript value to a JavaScript Object Notation (JSON) string. toJSON() returns a string representation 
+  //     return JSON.stringify(this.toJSON()); //JSON.stringify is available in all modern browsers. Converts a JavaScript value to a JavaScript Object Notation (JSON) string. toJSON() returns a string representation
   //   }
   // });
   // //instantiate the constructor A and add new properties (creating a new object)
@@ -299,7 +299,7 @@
   // //useful for security
 
 
-  //   ford.set('description', 
+  //   ford.set('description',
   //   '<script>alert("script injection")</script>');
   //   ford.escape('description');
 
@@ -336,7 +336,7 @@
   // //use the 'off' method to remove an event handler
   // //these are all provided by the events module. they can be included in any javascript object
 
-  // //create a regular js volcano object and use underscore's extend() method to extend and empty object and mix in the Backbone events object. this will add the contents of events to the empty object and return the volcano object with these properties 
+  // //create a regular js volcano object and use underscore's extend() method to extend and empty object and mix in the Backbone events object. this will add the contents of events to the empty object and return the volcano object with these properties
   // var volcano = _.extend({}, Backbone.Events);
   // volcano.on('disaster:eruption', function(){//define a custom event via : namespace convention
   //   console.log('Duck and Cover');
@@ -344,7 +344,7 @@
 
   // volcano.trigger('disaster:eruption'); //trigger the event
 
-  // //you can also forward the 
+  // //you can also forward the
 
   // /*
   // var volcano = _.extend({}, Backbone.Events);
@@ -360,13 +360,13 @@
   // //Model identity
   // //The 'id' property represents the model's persistent identity. It's undefined until the model has been saved.
   // //save is used to persist a model
-  // //when the model has been saved, the id property is set to the server's identifier for the model object. 
+  // //when the model has been saved, the id property is set to the server's identifier for the model object.
   // //the 'cid' property, is a temp identifier used until a model is assigned it's 'id'. once a model is saved, the 'cid' is no longer required.
   // //cid is applied as soon as the model object is created
 
   // //test to see if the model has been saved to the server...
   // console.log(ford.id); //undefined because it hasn't been saved
-  // console.log(ford.cid); // returns temp 
+  // console.log(ford.cid); // returns temp
   // console.log(ford.isNew()); // true >> lets me know if the object has been saved to the server
 
   // //Defaults
@@ -421,14 +421,14 @@
 
   // //create new constructor object
   // var Vehicle = Backbone.Model.extend({
-  //   //define validation 
+  //   //define validation
   //   validate: function(attrs, options){
   //     var validColors = ['white', 'red', 'blue'];
 
   //     if(_(validColors).include(attrs.color)){//if the validColors array includes the current colro attribute...
   //       return "makes a car in the color " + attrs.color + ".";
-  //     } 
-  //     else { 
+  //     }
+  //     else {
   //       return "does not make a car in the color " + attrs.color + ".";
   //     }
   //   }
@@ -502,7 +502,7 @@
   // //views handle models change events and events raised from the dom
   // //views depend on models
   // //models trigger events that the view can handle
-  // //views depend on the dom 
+  // //views depend on the dom
   // //the dom can raise vents that the view can handle
 
 
@@ -525,7 +525,7 @@
   // //anotherCarView.$el.css('background-color', 'yellow');
   // anotherCarView.$el.prepend(carView.el).css('background-color', 'purple');//why does this wipe out the first one? why can't I use anotherCarView.el?
 
-  //you can create new instances of your view constructor and you will pass the model that contains the data that is used to render the view. 
+  //you can create new instances of your view constructor and you will pass the model that contains the data that is used to render the view.
   //these properties, if supplied to the view's constructor, will be copied to the view object: model, collection, el, is, className, tagName, attributes, events
 
 
@@ -563,7 +563,7 @@
   //     return this;
   //   }
 
-  // }); 
+  // });
 
   // // //pass the model to the view's constructor
   // // var someView = new SomeOtherView({
@@ -579,17 +579,22 @@
 
 
 // SECOND EXAMPLE
-  // DEFINE AN OBJECT
-  // define class
-  var Person = function(config){
-    this.name = config.name;
-    this.age = config.age;
-    this.occupation = config.occupation;
-  };
-  // define function
-  Person.prototype.work = function(){
-    return this.name + ' is working.';    
-  };
+  // // DEFINE AN OBJECT PERSON CLASS (non-backbone)
+  // // define class
+  // var Person = function(config){
+  //   this.name = config.name;
+  //   this.age = config.age;
+  //   this.occupation = config.occupation;
+  // };
+  // // define function
+  // Person.prototype.work = function(){
+  //   return this.name + ' is working.';
+  // };
+  // // create a new person object and set some attributes
+  // var person = new Person({name: 'Mohit Jain', age: 25, occupation: 'Software Developer'});
+  //   // FOR EXAMPLE
+  //     // person.name will give you "Mohit Jain"
+  //     // person.work() will give you "Mohit Jain is working."
 
 
 
@@ -610,3 +615,197 @@
 
 
 
+
+  //
+  // // DEFINE THE CLASS ABOVE IN BACKBONE AS A MODEL
+  // var Person = Backbone.Model.extend({
+  //     defaults: {
+  //       name: 'Guest User',
+  //       age: '36',
+  //       occupation: 'Software Developer'
+  //     },
+  //     invalid: function(){
+  //       if(attributes.age < 0){
+  //         return 'Age must be positive.';
+  //       }
+  //       if(!attributes.name){
+  //         return 'Every person must have a name.';
+  //       }
+  //     },
+  //     work: function(){
+  //       return this.get('name') + ' is working.';
+  //     }
+  // });
+  //   // FOR EXAMPLE
+  //     // if you instantiate the Person class like so...
+  //     var person = new Person;
+  //     // person.get('age') will give you "36"
+  //     // person.get('work') will give you undefined
+  //     // person.work() will give you "Guest Useris working."
+  //
+  //     // you can also set attributes like so...
+  //     person.set({name:'Jane Doe', age: 57, occupation: 'Developer'});
+  //
+  //     person.on('invalid', function(model, invalid){
+  //             console.log(invalid);
+  //           });
+  //
+  //     // return all attributes of that object
+  //     //
+  //
+  //
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  (function($){
+
+//
+// Backbone.sync: Overrides persistence storage with dummy function. This enables use of Model.destroy() without raising an error.
+    /*
+        It is a function that Backbone calls everytime to read or save the model to the server. It represents the state of the model.
+
+        sync.(method, model, options)
+
+        method: It represents the CRUD operations such as create, read, update and delete.
+        model: It includes the model to be saved.
+        options: It fires success or error message depending on the method succeeded.
+    */
+
+    Backbone.sync = function(method, model, success, error){
+      success();
+    };
+
+    var Item = Backbone.Model.extend({
+      defaults: {
+        part1: 'hello',
+        part2: 'world'
+      }
+    });
+
+    var List = Backbone.Collection.extend({
+      model: Item
+    });
+
+    // ItemView class: Responsible for rendering each individual Item.
+    var ItemView = Backbone.View.extend({
+      tagName: 'li', // name of tag to be created
+
+//
+// ItemViews now responds to two clickable actions for each Item: swap and delete.
+      events: {
+        'click span.swap':  'swap text',
+        'click span.delete': 'remove item'
+      },
+
+//
+// initialize() now binds model change/removal to the corresponding handlers below.
+      initialize: function(){
+        _.bindAll(this, 'render', 'unrender', 'swap', 'remove'); // every function that uses 'this' as the current object should be in here
+
+        this.model.bind('change', this.render);
+        this.model.bind('remove', this.unrender);
+      },
+
+//
+// render() now includes two extra spans corresponding to the actions swap and delete.
+      render: function(){
+        $(this.el).html('<span style="color:white;">'+this.model.get('part1')+' '+this.model.get('part2')+'</span> &nbsp; &nbsp; <span class="swap" style="color:white; cursor:pointer;">swap</span> <span class="delete" style="cursor:pointer; color:white;">delete</span>');
+        return this; // for chainable calls, like .render().el
+      },
+
+//
+// unrender(): Makes Model remove itself from the DOM.
+      unrender: function(){
+        $(this.el).remove();
+      },
+
+//
+// swap() will interchange an Item's attributes. When the .set() model function is called, the event change will be triggered.
+      swap: function(){
+        var swapped = {
+          part1: this.model.get('part2'),
+          part2: this.model.get('part1')
+        };
+        this.model.set(swapped);
+      },
+
+//
+// remove(): We use the method destroy() to remove a model from its collection. Normally this would also delete the record from its persistent storage, but we have overridden that (see above).
+      remove: function(){
+        this.model.destroy();
+      }
+    });
+
+
+//
+// Because the new features (swap and delete) are intrinsic to each Item, there is no need to modify ListView.
+    var ListView = Backbone.View.extend({
+      el: $('body'), // attaches `this.el` to an existing element.
+      // events: Where DOM events are bound to View methods. Backbone doesn't have a separate controller to handle such bindings; it all happens in a View.
+      events: {
+        'click button#add': 'addItem'
+      },
+      // initialize(): Automatically called upon instantiation. Where you make all types of bindings, excluding UI events, such as clicks, etc.
+      initialize: function(){
+        _.bindAll(this, 'render', 'addItem', 'appendItem'); // every function that uses 'this' as the current object should be in here. fixes loss of context for 'this' within methods
+
+        this.collection = new List();
+        this.collection.bind('add', this.appendItem); // collection event binder
+
+        this.counter = 0; // total number of items added thus far
+        this.render(); // not all views are self-rendering. This one is.
+      },
+      // render(): Function in charge of rendering the entire view in this.el. Needs to be manually called by the user.
+      render: function(){
+        var self = this;
+        // render() now introduces a button to add a new list item.
+        $(this.el).append('<button id="add">Add list item</button>');
+        $(this.el).append('<ul></ul>');
+        _(this.collection.models).each(function(item){ // in case collection is not empty
+          self.appendItem(item);
+        }, this);
+      },
+      // addItem(): Custom function called via click event above.
+      addItem: function(){
+        this.counter++;
+        var item = new Item();
+        item.set({
+          part2: item.get('part2') + this.counter // modify item defaults
+        });
+        this.collection.add(item); // add item to collection; view is updated via event 'add'
+      },
+      // appendItem() is triggered by the collection event add, and handles the visual update.
+      // appendItem() is no longer responsible for rendering an individual Item. This is now delegated to the render() method of each ItemView instance.
+      appendItem: function(item){
+        var itemView = new ItemView({
+          model: item
+        });
+        $('ul', this.el).append(itemView.render().el);
+      }
+    });
+
+    // listView instance: Instantiate main app view.
+    var listView = new ListView();
+  })(jQuery);
